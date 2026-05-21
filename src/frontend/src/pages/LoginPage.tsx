@@ -37,7 +37,15 @@ export function LoginPage() {
           <button type="submit">Entrar</button>
         </form>
         <p>
-          ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
+          ¿No tienes cuenta?
+          <button
+            type="button"
+            className="secondary-button"
+            onClick={() => navigate('/register')}
+            style={{ marginLeft: '8px' }}
+          >
+            Regístrate
+          </button>
         </p>
       </div>
     </main>
