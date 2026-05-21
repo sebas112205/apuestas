@@ -1,8 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
 import { PrismaTicketRepository } from '../../infrastructure/repositories/PrismaTicketRepository'
+import { PrismaUserRepository } from '../../infrastructure/repositories/PrismaUserRepository'
 import { GetAllTickets } from '../../application/usecases/tickets/GetAllTickets'
 
 const ticketRepository = new PrismaTicketRepository()
+const userRepository = new PrismaUserRepository()
 const getAllTickets = new GetAllTickets(ticketRepository)
 
 export async function getTickets(req: Request, res: Response, next: NextFunction) {
@@ -23,6 +25,21 @@ export async function getTickets(req: Request, res: Response, next: NextFunction
     })
 
     res.json({ data: result.tickets, meta: { total: result.total, page, limit } })
+  } catch (error) {
+    next(error)
+  }
+}
+
+export async function promoteToAdmin(req: Request, res: Response, next: NextFunction) {
+  try {
+    if (!req.userId) {
+      return res.status(401).json({ error: 'No autorizado' })
+    }
+
+    await userRepository.promoteToAdmin(req.userId)
+    const user = await userRepository.findById(req.userId)
+
+    res.json({ data: { user: user?.toPublic() } })
   } catch (error) {
     next(error)
   }

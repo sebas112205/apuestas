@@ -23,3 +23,10 @@ export async function register(payload: RegisterPayload) {
   const response = await api.post('/auth/register', payload)
   return response.data.data
 }
+
+export async function promoteToAdmin() {
+  const response = await api.post('/admin/promote')
+  const user = response.data.data.user
+  localStorage.setItem('authUser', JSON.stringify(user))
+  return user
+}

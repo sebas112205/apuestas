@@ -240,6 +240,20 @@ button:hover {
   line-height: 1.6;
 }
 
+table {
+  width: 100%;
+}
+
+table td {
+  padding: 12px;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+table tr:hover {
+  background-color: rgba(15, 23, 42, 0.3);
+}
+
 @media (max-width: 920px) {
   .hero-banner {
     grid-template-columns: 1fr;

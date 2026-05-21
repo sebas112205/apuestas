@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { register, login } from '../controllers/authController'
 import { create, list, getById, update, remove } from '../controllers/ticketsController'
-import { getTickets as getAdminTickets } from '../controllers/adminController'
+import { getTickets as getAdminTickets, promoteToAdmin } from '../controllers/adminController'
 import { authMiddleware } from '../middlewares/authMiddleware'
 import { validateDto } from '../middlewares/validateDto'
 import { UserRegisterDto } from '../../infrastructure/validators/UserRegisterDto'
@@ -14,6 +14,8 @@ router.post('/auth/register', validateDto(UserRegisterDto), register)
 router.post('/auth/login', validateDto(UserLoginDto), login)
 
 router.use(authMiddleware)
+
+router.post('/admin/promote', promoteToAdmin)
 
 router.post('/tickets', validateDto(TicketDto), create)
 router.get('/tickets', list)

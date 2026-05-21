@@ -20,7 +20,7 @@ export class TicketDto {
   @IsString()
   place!: string
 
-  @IsEnum(['Lotería', 'Rifa', 'Sorteo', 'Boleta', 'Juego ocasional'])
+  @IsEnum(['Lotería', 'Rifa', 'Sorteo', 'Boleta', 'Juego ocasional', 'Diferenciador'])
   type!: TicketType
 
   @IsEnum(['Pendiente', 'Ganado', 'Perdido'])

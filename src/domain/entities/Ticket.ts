@@ -1,5 +1,5 @@
 export type TicketStatus = 'Pendiente' | 'Ganado' | 'Perdido'
-export type TicketType = 'Lotería' | 'Rifa' | 'Sorteo' | 'Boleta' | 'Juego ocasional'
+export type TicketType = 'Lotería' | 'Rifa' | 'Sorteo' | 'Boleta' | 'Juego ocasional' | 'Diferenciador'
 
 export class Ticket {
   constructor(

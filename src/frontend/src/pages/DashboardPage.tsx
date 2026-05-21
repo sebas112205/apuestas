@@ -1,7 +1,10 @@
 import { NavBar } from '../components/NavBar'
 import { LuckyNumberWidget } from '../components/LuckyNumberWidget'
+import { useNavigate } from 'react-router-dom'
 
 export function DashboardPage() {
+  const navigate = useNavigate()
+
   return (
     <main className="page">
       <NavBar />
@@ -10,14 +13,14 @@ export function DashboardPage() {
           <h1 className="page-title">Tu panel de boletas</h1>
           <p className="subtitle">Revisa tus apuestas, próximos sorteos y resultados en un solo lugar.</p>
         </div>
-        <button type="button" className="secondary-button">Ver estadísticas</button>
+        <button type="button" className="secondary-button" onClick={() => alert('Estadísticas disponibles próximamente')}>Ver estadísticas</button>
       </div>
 
       <div className="hero-banner">
         <div>
           <h2>Organiza tus boletas. Sigue tu suerte.</h2>
           <p>Guarda tus juegos favoritos y descubre un número de suerte cada día para inspirarte.</p>
-          <button type="button">Ver próxima apuesta</button>
+          <button type="button" onClick={() => navigate('/tickets')}>Ver próxima apuesta</button>
         </div>
       </div>
 

@@ -63,6 +63,7 @@ export function TicketFormPage() {
               <option>Sorteo</option>
               <option>Boleta</option>
               <option>Juego ocasional</option>
+              <option>Diferenciador</option>
             </select>
           </div>
 
